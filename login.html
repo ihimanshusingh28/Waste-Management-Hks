@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="images/logo.jpeg.jpeg" class="nav-branding">
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="about.html">About</a></li>
+                <li class="nav-item"><a href="map.html">Alert</a></li>
+                
+
+                <li class="nav-item"><a href="report.html">Reports</a></li>
+                <li class="nav-item"><a href="login.html">LogIn/Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="form-container">
+            <form id="loginForm" class="form">
+                <h2>Login</h2>
+                <div class="input-group">
+                    <label for="loginUsername">Username:</label>
+                    <input type="text" id="loginUsername" placeholder="Enter your username" autocomplete="off" required>
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="off" required>
+                </div>
+                <div class="captcha-container">
+                    <div class="captcha" id="captchaText"></div>
+                    <button type="button" class="refresh-btn" onclick="refreshCaptcha()">↻</button>
+                </div>
+                <input type="text" id="captchaInput" placeholder="Enter CAPTCHA" required>
+                <button type="submit">Login</button>
+            </form>
+            <div class="form-spacing">
+                <p>Don't have an account? <a href="register.html">Register</a></p>
+
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Clean IT All rights reserved.</p>
+    </footer>
+    <script>
+        function generateCaptcha() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let captcha = "";
+            for (let i = 0; i < 6; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return captcha;
+        }
+    
+        // Display CAPTCHA on Page Load
+        function loadCaptcha() {
+            const captchaText = document.getElementById("captchaText");
+            captchaText.innerText = generateCaptcha();
+        }
+    
+        // Refresh CAPTCHA Manually
+        function refreshCaptcha() {
+            loadCaptcha(); // Generate new CAPTCHA
+            document.getElementById("captchaInput").value = ""; // Clear input
+        }
+    
+        // Load CAPTCHA initially
+        document.addEventListener("DOMContentLoaded", loadCaptcha);
+    
+        // Validate CAPTCHA on Form Submission
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const enteredCaptcha = document.getElementById("captchaInput").value;
+            const actualCaptcha = document.getElementById("captchaText").innerText;
+    
+            if (enteredCaptcha === actualCaptcha) {
+                alert("Login Successful!");
+            } else {
+                alert(" Invalid CAPTCHA. Try Again!");
+                refreshCaptcha(); // Refresh CAPTCHA after failure
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+<style>
+    .captcha-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .captcha {
+            width: 65%;
+            height: 60px;
+            background-color: #e0e0e0;
+            text-align: center;
+            line-height: 60px;
+            font-size: 24px;
+            letter-spacing: 5px;
+            filter: blur(2px); 
+        }
+</style>
+
+</html>

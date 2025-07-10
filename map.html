@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="styles.css">
+
+   <!-- Include Leaflet CSS and JavaScript -->
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+    crossorigin=""></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="images/logo.jpeg.jpeg" class="nav-branding">
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="#about">About</a></li>
+                <li class="nav-item"><a href="map.html">Alert</a></li>
+                <li class="nav-item"><a href="report.html">Reports</a></li>
+                <li class="nav-item"><a href="login.html">LogIn/Sign In</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+        <div class="content-container">
+            <h1>About Our Map</h1>
+            <p>Our innovative feature allows us to track the precise location of users in real time. When users report an area where unwanted garbage has been dumped, the system automatically sends the exact location to the Municipal Corporation Department (MCD) for swift cleanup.</p>
+                 <p>This seamless integration helps maintain cleanliness in our surroundings and ensures that waste is managed efficiently and promptly, contributing to a cleaner, greener environment for all.</p>
+        </div>
+    </main>
+        <section class="grid-section">
+            <div class="grid-item">
+                <div class="name-demo" id="name-demo-1">
+                    <h2>Name: Himanshu Singh</h2>
+                    <p> Location: 📍 Block A ,South-City 2, Gurgaon</p>
+                    <div class="image-demo">
+                        <img src="images/image1.jpg" alt="Image 1">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid-item">
+                <div class="name-demo" id="name-demo-2">
+                    <h2>Name: Suraj Yadav</h2>
+                    <p>Location: 📍North Campus, DU</p>
+                    <div class="image-demo">
+                        <img src="images/image2.jpg" alt="Image 2">
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="name-demo" id="name-demo-3">
+                    <h2>Name: Ankit Singh</h2>
+                    <p> Location: 📍Sector 45 , Gurgaon</p>
+                    <div class="image-demo">
+                        <img src="images/imag3.jpg" alt="Image 3">
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="name-demo" id="name-demo-4">
+                    <h2>Name: Nikita Pal</h2>
+                    <p> Location: 📍Borivali, Mumbai</p>
+                    <div class="image-demo">
+                        <img src="images/image4.jpg" alt="Image 4">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <h2 id="workdone" >Mission Accomplished </h2>
+        <section class="additional-section">
+            <div class="grid-section">
+                <div class="grid-item">
+                    <div class="name-demo" id="name-demo-5">
+                        <h2>Complain by: Himanshu Singh</h2>
+                        <p>Location: South city 2</p>
+                        <div class="image-demo">
+                            <img src="images/image5.jpg" alt="Image 5">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="name-demo" id="name-demo-6">
+                        <h2>Solved: Municipal Corporation</h2>
+                        <p>Location: Gurugram</p>
+                        <div class="image-demo">
+                            <img src="images/image6.jpg" alt="Image 6">
+                        </div>
+                    </div>
+                </div>
+        </section>
+    
+
+    <style>
+        /* Reset some default styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #dceeff;
+        }
+        /* Add CSS styles for layout */
+        main {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start; /* Align items at the top */
+            padding-top: 40px; /* Add more top padding */
+        }
+    
+        .map-container,
+        .content-container {
+            flex: 1;
+        }
+    
+        .map-container {
+            height: 400px;
+        }
+    
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    
+        .content-container {
+            margin-left: 30px;
+            padding: 20px;
+        }
+    
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    
+        p {
+            font-family: sans-serif;
+            font-size: 16px;
+        }
+    
+        /* Style for the navbar */
+        .navbar {
+            background-color: #2daa14;
+
+            color: white;
+            padding: 10px;
+        }
+    
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+    
+        /* Style for the hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+    
+        .bar {
+            background-color: white;
+            height: 3px;
+            width: 25px;
+            margin: 3px 0;
+        }
+    
+        /* Style for the container */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    
+        /* Style for the form container */
+        .form-container {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    
+        .form h2 {
+            font-size: 24px;
+        }
+    
+        .form .input-group {
+            margin: 10px 0;
+        }
+    
+        .form label {
+            display: block;
+            font-weight: bold;
+        }
+    
+        .form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    
+        .form button[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    
+        /* Add media query for responsive design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+    
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                z-index: 1;
+            }
+    
+            .nav-menu.active {
+                display: flex;
+            }
+    
+            .nav-menu .nav-item {
+                padding: 10px 15px;
+            }
+    
+            .nav-menu .nav-item a {
+                color: white;
+                text-decoration: none;
+            }
+        }
+        /* grid */
+        .grid-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 30px;
+            align-items: center;
+            display: grid ;
+            grid-template-columns: 400px 400px; /* 2 columns */
+            gap: 20px; /* Spacing between grid items */
+            margin-top: 30px; /* Add margin for spacing */
+        }
+
+        /* Style for grid items */
+        .grid-item {
+            justify-content: center;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .image-demo {
+            border-radius: 5px;
+            margin-top: 20px;
+            width: 350px; /* Set the width of the image box */
+            height: 200px; /* Set the height of the image box */
+            overflow: hidden; /* Hide any overflowing content */
+            border: 1px solid #ccc; /* Add a border for the image box */
+        }
+
+        .image-demo img {
+            border-radius: 5px;
+            width: 100%; /* Make the image width 100% of its container */
+            height: 100%; /* Automatically adjust the height to maintain aspect ratio */
+            object-fit: cover; /* Maintain aspect ratio while covering the container */
+        }
+        #workdone {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        /* Add responsiveness for grid section */
+        @media (max-width: 768px) {
+            .grid-section {
+                grid-template-columns: 1fr; /* Single column on smaller screens */
+            }
+        }
+        /* footer */
+        footer {
+            text-align: center;
+            background-color: #2daa14;
+
+            color: #fff;
+            padding: 10px;
+        }
+
+
+    </style>
+    
+    <script>
+        // JavaScript code for your map goes here
+        const map = L.map('map'); 
+        map.setView([28.09623, 76.97395], 13); 
+           //OPEN
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map); 
+
+        let marker, circle, zoomed;
+
+        navigator.geolocation.watchPosition(success, error);
+
+        function success(pos) {
+            const lat = pos.coords.latitude;
+            const lng = pos.coords.longitude;
+            const accuracy = pos.coords.accuracy;
+
+            if (marker) {
+                map.removeLayer(marker);
+                map.removeLayer(circle);
+            }
+
+            marker = L.marker([lat, lng]).addTo(map);
+            circle = L.circle([lat, lng], { radius: accuracy }).addTo(map);
+
+            if (!zoomed) {
+                zoomed = map.fitBounds(circle.getBounds()); 
+            }
+
+            map.setView([lat, lng]);
+        }
+
+        function error(err) {
+            if (err.code === 1) {
+                alert("Please allow geolocation access");
+            } else {
+                alert("Cannot get current location");
+            }
+        }
+    </script>
+    <footer>
+        <p>&copy; 2025 Clean IT All rights reserved.</p>
+    </footer>
+</body>
+</html>
